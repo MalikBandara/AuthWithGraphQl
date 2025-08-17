@@ -1,0 +1,13 @@
+type Post
+  @model
+  @auth(
+    rules: [
+      { allow: public, operations: [read] } # Everyone can read
+      { allow: owner, operations: [create, update] } # Only owner can create & update
+    ]
+  ) {
+  id: ID!
+  title: String!
+  content: String!
+  owner: String
+}
